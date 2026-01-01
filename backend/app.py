@@ -1,6 +1,7 @@
 from flask import Flask, jsonify
 from flask_cors import CORS
 
+# ---------------- APP INIT ----------------
 app = Flask(__name__)
 CORS(app)
 
@@ -86,33 +87,13 @@ def sarima_forecast(dept, year):
 @app.route("/budgets/summary")
 def budget_summary():
     return jsonify([
-        {
-            "department": "IT",
-            "planned": 6660000,
-            "used": 22735000
-        },
-        {
-            "department": "HR",
-            "planned": 6660000,
-            "used": 25465000
-        },
-        {
-            "department": "Finance",
-            "planned": 6660000,
-            "used": 27055000
-        },
-        {
-            "department": "Operations",
-            "planned": 6660000,
-            "used": 6475000
-        },
-        {
-            "department": "Sales",
-            "planned": 0,
-            "used": 18360000
-        }
+        {"department": "IT", "planned": 26640000, "used": 10009000},
+        {"department": "HR", "planned": 26640000, "used": 15465000},
+        {"department": "Finance", "planned": 26640000, "used": 17055000},
+        {"department": "Operations", "planned": 26640000, "used": 6475000},
+        {"department": "Sales", "planned": 0, "used": 18360000}
     ])
 
-# ---------------- RUN ----------------
+# ---------------- RUN (LOCAL ONLY) ----------------
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=True)
